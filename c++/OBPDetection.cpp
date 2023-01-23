@@ -13,6 +13,12 @@
 #include <numeric>
 #include "OBPDetection.h"
 
+// local lerp
+float lerp(float a, float b, float t)
+{
+    return a + t * (b - a);
+}
+
 /**
  * Constructor of the OBPDetection class.
  *
@@ -399,8 +405,8 @@ void OBPDetection::findOWME()
 
         // Empty a value interpolated between the two max (resp. min) values at the position (in time)
         // where another min (resp. max) value is to be able to calculate the envelope.
-        auto lerpMax = std::lerp(*ampMax1, *ampMax2, getRatio(*timeMax1, *timeMax2, *timeMin1));
-        auto lerpMin = std::lerp(*ampMin1, *ampMin2, getRatio(*timeMin1, *timeMin2, *timeMax2));
+        auto lerpMax = lerp(*ampMax1, *ampMax2, getRatio(*timeMax1, *timeMax2, *timeMin1));
+        auto lerpMin = lerp(*ampMin1, *ampMin2, getRatio(*timeMin1, *timeMin2, *timeMax2));
 
         // Empty the envelope, save both time and values.
         omweData.push_back(lerpMax - *ampMin1);
@@ -450,7 +456,7 @@ void OBPDetection::findMAP()
         }
     }
 
-    int lerpSBPtime = (int) std::lerp(lbSTime, ubSTime, getRatio(lbSBP, ubSBP, sbpSearch));
+    int lerpSBPtime = (int) lerp(lbSTime, ubSTime, getRatio(lbSBP, ubSBP, sbpSearch));
     resSBP = getPressureAt(lerpSBPtime);
 
     double dbpSearch = ratio_DBP * maxVAL;
@@ -477,7 +483,7 @@ void OBPDetection::findMAP()
         // value relating to the higher time the ratio is inverted.
         // The interpolation is done from the "upper bound" time (earlier in time) to the
         // "lower bound" time (later in time).
-        int lerpDBPtime = (int) std::lerp(ubDTime, lbDTime, 1.0 - getRatio(lbDBP, ubDBP, dbpSearch));
+        int lerpDBPtime = (int) lerp(ubDTime, lbDTime, 1.0 - getRatio(lbDBP, ubDBP, dbpSearch));
         resDBP = getPressureAt(lerpDBPtime);
     } else
     {
@@ -516,7 +522,7 @@ double OBPDetection::getPressureAt(int time)
 
 /**
  * Helper function that gets the ratio from a value that is in between two others
- * to then calculate the interpolated value between the two with the std::lerp (C++20)
+ * to then calculate the interpolated value between the two with lerp
  * function.
  * @param lowerBound    the upper bound value
  * @param upperBound    the lower bound value
