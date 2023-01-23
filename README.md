@@ -41,7 +41,7 @@ The following libraries are required to compile and run the program:
     git submodule update
     
 ## Installing dependencies (for Ubuntu)
-This quick guide assumes g++ and cmake are installed with a g++ verstion that supports C++20.
+This quick guide assumes g++ and cmake are installed with a g++ verstion that supports C++17.
 
 ### Install Comedi Development Librairy
 
