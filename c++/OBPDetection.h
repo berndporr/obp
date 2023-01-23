@@ -13,6 +13,8 @@
 
 #include <vector>
 #include <atomic>
+#include <algorithm>
+#include <cmath>
 #include "common.h"
 
 /**

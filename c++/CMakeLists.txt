@@ -1,15 +1,12 @@
-cmake_minimum_required(VERSION 3.1.0)
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.8.0)
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(obp)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-
-if(CMAKE_VERSION VERSION_LESS "3.7.0")
-    set(CMAKE_INCLUDE_CURRENT_DIR ON)
-endif()
 
 # required packages
 find_package(Qt5 COMPONENTS Widgets PrintSupport Core REQUIRED)
@@ -18,7 +15,7 @@ find_package(Threads)
 # required libraries
 # find_library(comedi REQUIRED)
 # find_library(iir REQUIRED)
-# find_library(qwt-qt5 REQUIRED)
+# find_library(qwt REQUIRED)
 
 set(PROJECT_LIBS
       Threads
