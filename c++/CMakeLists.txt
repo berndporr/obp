@@ -16,9 +16,9 @@ find_package(Qt5 COMPONENTS Widgets PrintSupport Core REQUIRED)
 find_package(Threads)
 
 # required libraries
-find_library(comedi REQUIRED)
-find_library(iir REQUIRED)
-find_library(qwt-qt5 REQUIRED)
+# find_library(comedi REQUIRED)
+# find_library(iir REQUIRED)
+# find_library(qwt-qt5 REQUIRED)
 
 set(PROJECT_LIBS
       Threads

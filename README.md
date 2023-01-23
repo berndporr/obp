@@ -36,6 +36,7 @@ The following libraries are required to compile and run the program:
 **IMPORTANT:** This repository contains a submodule, the software will not build, if the submodule is not cloned. To clone both this repository and the submodule run the following commands:
 
     git clone https://github.com/berndporr/oscillometric_blood_pressure.git
+    cd oscillometric_blood_pressure
     git submodule init
     git submodule update
     
@@ -59,8 +60,8 @@ Then install as usual:
 
 ## Building the Projcet
 The project is set-up as a cmake project (details are defined in [CMakeList.txt](https://github.com/berndporr/oscillometric_blood_pressure/tree/master/c%2B%2B/CMakeLists.txt)). 
-Run `cmake .` from the console in the source foler ([c++](https://github.com/berndporr/oscillometric_blood_pressure/tree/master/c%2B%2B)) to generate the Makefile and `make` to compile. 
-Run `ctest` to run the test.
+Run `cmake .` from the console in the `c++` source folder to generate the Makefile and `make` to compile. 
+Run `ctest` to run the tests.
 
 
 ## Running the Application
